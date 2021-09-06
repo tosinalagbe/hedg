@@ -1,27 +1,39 @@
 language: cpp
-dist: xenial
+dist: trusty
+sudo: false
+os: linux
 notifications:
   email: false
 
-# Define builds on mulitple OS/compiler combinations. 
-# Feel free to add/remove entries from this list.
+
 matrix:
   include:
-    - os: linux
+    - env: COMPILER=g++-6 BUILD=Debug STANDARD=17
+      compiler: gcc
       addons:
         apt:
+          update: true
           sources:
+            - sourceline: 'ppa:mhier/libboost-latest'
             - ubuntu-toolchain-r-test
           packages:
-            - lcov
-            - g++-7
-      env:
-        - MATRIX_EVAL="CXX_COMPILER=g++-7; sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-7 90"
+            - g++-6
+            - boost1.67
+    - env: COMPILER=g++-6 BUILD=Release STANDARD=17
+      compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+            - sourceline: 'ppa:mhier/libboost-latest'
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+            - boost1.67
+
 
 
 before_install:
-  - sudo apt-get install libboost-all-dev
-  - sudo apt-get install libssl-dev
   - PARENTDIR=$(pwd)
   - mkdir $PARENTDIR/build
 
