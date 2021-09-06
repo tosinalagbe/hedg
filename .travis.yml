@@ -3,7 +3,7 @@ sudo: false
 language: cpp
 
 before_install:
-  - sudo add-apt-repository ppa:mhier/libboost-latest
+  - sudo apt-get install libboost1X.71-all-dev
   - sudo apt-get install libssl-dev
 
 addons:
