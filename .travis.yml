@@ -39,7 +39,7 @@ before_install:
 
 install: 
   - cd $PARENTDIR/build
-  - cmake $PARENTDIR -DCMAKE_BUILD_TYPE=Coverage -DCMAKE_CXX_COMPILER=$CXX_COMPILER
+  - cmake $PARENTDIR
   - make
 
 script:
