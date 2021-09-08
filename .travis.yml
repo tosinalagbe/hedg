@@ -8,9 +8,11 @@ compiler: gcc
 addons:
   apt:
     sources:
+      - sourceline: 'ppa:mhier/libboost-latest'
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
+      - boost1.67
 
 script:
   - export CC=gcc-7
