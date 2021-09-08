@@ -1,57 +1,20 @@
-language: cpp
 dist: trusty
-sudo: false
+sudo: require
+
 os: linux
-notifications:
-  email: false
+language: cpp
+compiler: gcc
 
-
-matrix:
-  include:
-    - env: COMPILER=g++-6 BUILD=Debug STANDARD=17
-      compiler: gcc
-      addons:
-        apt:
-          update: true
-          sources:
-            - sourceline: 'ppa:mhier/libboost-latest'
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - boost1.67
-    - env: COMPILER=g++-6 BUILD=Release STANDARD=17
-      compiler: gcc
-      addons:
-        apt:
-          update: true
-          sources:
-            - sourceline: 'ppa:mhier/libboost-latest'
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - boost1.67
-
-
-
-before_install:
-  - PARENTDIR=$(pwd)
-  - mkdir $PARENTDIR/build
-
-install: 
-  - cd $PARENTDIR/build
-  - cmake $PARENTDIR
-  - make
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
 
 script:
-  - make coverage
-
-after_success:
-  - cd $PARENTDIR/build
-  - lcov --list coverage_out.info.cleaned  # Show test report in travis log.
-  # Install coverals gem for uploading coverage to coveralls.
-  - gem install coveralls-lcov
-  - coveralls-lcov coverage_out.info.cleaned  # uploads to coveralls
-  - bash <(curl -s https://codecov.io/bash) -f coverage_out.info.cleaned || echo "Codecov did not collect coverage reports"
-
-
-
+  - export CC=gcc-7
+  - export CXX=g++-7
+  - cmake --version
+  - cmake CMakeLists.txt
+  - cmake  --build . --target neat
