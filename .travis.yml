@@ -15,8 +15,6 @@ addons:
       - boost1.67
 
 script:
-  - export CC=gcc-7
-  - export CXX=g++-7
-  - cmake --version
-  - cmake CMakeLists.txt
-  - cmake  --build . --target neat
+  - cmake -S . -B ./build -D ENABLE_COVERAGE:BOOL=ON ../
+  - cmake --build ./build -- -j2
+  - cd build && ctest -j2
