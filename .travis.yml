@@ -18,5 +18,5 @@ script:
   - export CC=gcc-7
   - export CXX=g++-7
   - cmake --version
-  - cmake CMakeLists.txt
-  - cmake  --build . --target neat
+  - cmake .
+  - cmake  --build . -- -j2
