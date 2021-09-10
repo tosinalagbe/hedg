@@ -24,6 +24,20 @@ sudo apt-get install libboost-all-dev
 ```
 
 ### Buiding and Running
+1. Clone the repo
+2. Locate the config.cpp file in the src/config directory.
+3. Edit the config.cpp file to suit your betfair log in details as well as the path where your key and certificate files are stored (note that the path is relative to where your final executable is).
+4. - For Windows Users, create a new C++ project with Visual Studio and add the header and source files, then let Visual Studio build and compile it automatically.
+ - For Linux Users, build with cmake:
+  ```
+  mkdir build
+  cd build/
+  cmake ..
+  make
+  ```
+5. The steps above runs the example vwapstrategy in the repo. For linux users, add your strategy(example usage below) and update the CMakeLists.txt file to include your strategy source code as required.
+
+
 
 
 
