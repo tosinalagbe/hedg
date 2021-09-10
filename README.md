@@ -163,6 +163,17 @@ private:
 	float entry_price = 0.0;
 };
 
+int main() {
+	hedg::Framework betfair;
+	//use shared_ptr to initialize strategy	
+	std::shared_ptr<hedg::Base_Strategy> my_strat = std::make_shared<vwap_strategy>();
+	my_strat->set_country_code({ "US", "NZ" })->set_event_types({ "7","4339" });
+	betfair.add_strategy(my_strat);
+	//can add as many strategies as possible
+	betfair.start();
+
+}
+
 ```
 6. For full api details of the library and it's functions, please go through the Documentation.
 
