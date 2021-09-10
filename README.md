@@ -44,6 +44,8 @@ To implement your strategies to be run on Hedg, there are three requirements
 3. ```run_strat()``` should be implemented. run_strat is the crux of your strategy.
 A not so concise example is shown below:
 ```
+#include "hedg/framework.h"
+
 struct vwap_strategy : public hedg::Base_Strategy {
 
 	vwap_strategy() {}
