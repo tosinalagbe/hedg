@@ -1,11 +1,11 @@
 [![Build Status](https://app.travis-ci.com/tosinalagbe/hedg.svg?branch=main)](https://app.travis-ci.com/tosinalagbe/hedg)
 
-# hedg
+# Hedg
 Fast and easy to use, high frequency trading framework for betfair
 
 <!-- ABOUT THE PROJECT -->
 ## About Hedg
-In the sports trading industry, low latency is really important. The need to be first in line on the queue as well as the need to be able to cancel or close out bad orders quickly are some of the latency sensitive needs involved. Hedg was built with these in mind. Also enables quants and automated traders who want to use efficient c++ libraries to build strategies that are latency sensitive.
+In the sports trading industry, low latency is really important. The need to be first in line on the queue as well as the need to be able to cancel or close out bad orders quickly are some of the latency sensitive needs involved. Hedg was built with these in mind. Also enables quants and automated traders who want to use efficient c++ libraries to build strategies that are latency sensitive.(At the moment, this framework only supports trading pre-off markets on betfair).
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -42,7 +42,7 @@ To implement your strategies to be run on Hedg, there are three requirements
 1. All strategies should derive from ```Base_Strategy```
 2. ```clone()``` function that returns a pointer to your strategy class must be implemented.
 3. ```run_strat()``` should be implemented. run_strat is the crux of your strategy.
-A concise example is shown below:
+A not so concise example is shown below:
 ```
 struct vwap_strategy : public hedg::Base_Strategy {
 
@@ -84,7 +84,8 @@ struct vwap_strategy : public hedg::Base_Strategy {
 
 			//opening signal to place order (leave unmatched at bsp)
 			//wait for wom to favour laying the place lay when there's little money on the lay size to be at top of queue
-			if (fave_runner_wom > 75 && fave_runner_best_available_lay.get_size() < 10 && entry_price != fave_runner_best_available_back.get_price()) {
+			if (fave_runner_wom > 75 && fave_runner_best_available_lay.get_size() < 10
+			&& entry_price != fave_runner_best_available_back.get_price()) {
 				//create order
 				float order_price = fave_runner_best_available_lay.get_price();
 				//using 0 pound stake
@@ -161,8 +162,28 @@ private:
 };
 
 ```
+6. For full api details of the library and it's functions, please go through the Documentation.
 
+<!-- ROADMAP -->
+## Roadmap
+At the time of writing this, support for order streaming is yet to be implemented. 
+Also support for closing open orders before market elapses is not yet implemented.
+I welcome contributions towards these goals.
 
+<!-- CONTRIBUTING -->
+## Contributing
 
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
 
 
