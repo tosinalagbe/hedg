@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.5)
 
 project(hedg VERSION 1.0 DESCRIPTION "high frequency betfair trading framework")
 
-#include(GNUInstallDirs)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
