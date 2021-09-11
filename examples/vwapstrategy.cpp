@@ -26,7 +26,6 @@ struct vwap_strategy : public hedg::Base_Strategy {
 		//I recommend this pattern
 		init();
 		while (handler->is_active(market_id)) {
-			//orders.push_back(Order(1, Bid{ 3, 4.5 }, Order_Type::LIMIT));
 
 			//fave runner is runner with lowest odds/price
 			int fave_runner_idx = *sorted_runners.begin();	
