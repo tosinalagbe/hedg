@@ -47,7 +47,6 @@ public:
 			return;
 		}
 		for (;;) {
-			std::pair<int, int> new_me;
 			std::pair<std::string, Market_Projection> new_market;
 			markets.wait_and_pop(new_market);
 			for (auto& strat : strats) {
