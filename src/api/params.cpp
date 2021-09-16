@@ -45,19 +45,7 @@ namespace params {
 
 	}
 
-	// template class place_order<Back>;
-	// template class place_order<Lay>;
-
-	// template<typename Bid_Type>
-	// place_order<Bid_Type>::place_order(std::string session_id_, std::string market_id_,std::vector<Order>&orders_, std::string end_point_)
-	// 	:session_id{ session_id_ }, market_id{market_id_}, orders{ orders_ }, end_point{ end_point_ } {}
 	
-	// template<typename Bid_Type>
-	// std::string place_order<Bid_Type>::body() {
-	// 	Bid_Type bid_type;
-	// 	return bid_type.instruction(market_id, orders);
-	// }
-
 	login::login(std::string username_, std::string password_, std::string endpoint_)
 		:username{ username_ }, password{ password_ }, endpoint{ endpoint_ } {}
 
